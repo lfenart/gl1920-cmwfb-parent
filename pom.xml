@@ -19,10 +19,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
-  			<artifactId>mockito-core</artifactId>
-  			<version>2.23.4</version>
-  			<scope>test</scope>
-    	</dependency>	
+			<artifactId>mockito-core</artifactId>
+			<version>2.23.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<reporting>
 		<plugins>
@@ -34,6 +34,23 @@
 						<reports>
 							<!-- select non-aggregate reports -->
 							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>3.1.12.2</version>
+				<configuration>
+					<xmlOutput>true</xmlOutput>
+					<!-- Optional directory to put spotbugs xdoc xml report -->
+					<xmlOutputDirectory>target/site/spotbugs</xmlOutputDirectory>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>spotbugs</report>
 						</reports>
 					</reportSet>
 				</reportSets>
@@ -76,7 +93,7 @@
 										<limit>
 											<counter>INSTRUCTION</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.90</minimum>
+											<minimum>0.20</minimum>
 										</limit>
 									</limits>
 								</rule>
